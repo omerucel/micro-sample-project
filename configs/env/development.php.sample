@@ -1,0 +1,11 @@
+<?php
+
+$configs = include(__DIR__ . '/../global.php');
+ini_set('display_errors', true);
+
+/**
+ * Logger
+ */
+$configs['logger']['default_level'] = \Monolog\Logger::DEBUG;
+
+return $configs;

@@ -1,0 +1,17 @@
+{
+    "name": "omerucel/micro-sample-project",
+    "type": "library",
+    "require": {
+        "symfony/http-foundation": "3.0.6",
+        "monolog/monolog": "1.19.0",
+        "nikic/fast-route": "1.0.0",
+        "omerucel/di": "1.1",
+        "twig/twig": "1.24.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "OU": "src/",
+            "Project": "src/"
+        }
+    }
+}
