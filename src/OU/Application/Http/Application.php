@@ -2,11 +2,10 @@
 
 namespace OU\Application\Http;
 
-use OU\Application\ApplicationAbstract;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Application extends ApplicationAbstract
+class Application extends \OU\Application\Application
 {
     /**
      * @var Dispatcher

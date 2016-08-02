@@ -5,7 +5,7 @@ namespace OU\Application;
 use OU\DI;
 use OU\ErrorCatcher;
 
-abstract class ApplicationAbstract
+class Application
 {
     /**
      * @var DI
