@@ -147,6 +147,19 @@ class Wrapper
     /**
      * @param $sql
      * @param array $params
+     * @return array
+     */
+    public function fetchAllKeyPair($sql, array $params = [])
+    {
+        $stmt = $this->execute($sql, $params);
+        $results = $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);
+        $stmt->closeCursor();
+        return $results;
+    }
+
+    /**
+     * @param $sql
+     * @param array $params
      * @param string $class
      * @param array $classParams
      * @return array
@@ -215,7 +228,7 @@ class Wrapper
     /**
      * @return \PDO
      */
-    protected function getPDO()
+    public function getPDO()
     {
         return $this->pdo;
     }
