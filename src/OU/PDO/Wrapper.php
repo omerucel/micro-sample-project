@@ -180,18 +180,18 @@ class Wrapper
      */
     public function execute($sql, array $params = array())
     {
-        if ($this->getSqlLogger() != null) {
+        if ($this->getSqlLogger() != null && $this->getSqlLogger()->isEnabled()) {
             $this->getSqlLogger()->start($sql, $params);
         }
         try {
             $stmt = $this->tryExecute($sql, $params);
         } catch (\Exception $exception) {
-            if ($this->getSqlLogger() != null) {
+            if ($this->getSqlLogger() != null && $this->getSqlLogger()->isEnabled()) {
                 $this->getSqlLogger()->end($sql, $params);
             }
             throw $exception;
         }
-        if ($this->getSqlLogger() != null) {
+        if ($this->getSqlLogger() != null && $this->getSqlLogger()->isEnabled()) {
             $this->getSqlLogger()->end($sql, $params);
         }
         return $stmt;

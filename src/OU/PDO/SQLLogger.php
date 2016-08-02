@@ -2,15 +2,16 @@
 
 namespace OU\PDO;
 
+use OU\DI;
 use OU\MicroTimer;
 use Psr\Log\LoggerInterface;
 
 class SQLLogger
 {
     /**
-     * @var LoggerInterface
+     * @var DI
      */
-    protected $logger;
+    protected $di;
 
     /**
      * @var MicroTimer
@@ -18,11 +19,16 @@ class SQLLogger
     protected $timer;
 
     /**
-     * @param LoggerInterface $logger
+     * @var bool
      */
-    protected function __construct(LoggerInterface $logger)
+    protected $status = true;
+
+    /**
+     * @param DI $di
+     */
+    public function __construct(DI $di)
     {
-        $this->logger = $logger;
+        $this->di = $di;
     }
 
     /**
@@ -48,6 +54,24 @@ class SQLLogger
      */
     protected function getLogger()
     {
-        return $this->logger;
+        return $this->di->get('logger_helper')->getLogger();
+    }
+
+    public function enable()
+    {
+        $this->status = true;
+    }
+
+    public function disable()
+    {
+        $this->status = false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->status;
     }
 }
